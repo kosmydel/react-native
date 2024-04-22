@@ -68,7 +68,9 @@ Point ScrollViewShadowNode::getContentOriginOffset(
   auto stateData = getStateData();
   auto contentOffset = stateData.contentOffset;
 
-  auto props = getConcreteProps();
+  const auto& props = getConcreteProps();
+  auto result =
+      props.transform * Vector{-contentOffset.x, -contentOffset.y, 0, 1};
 
   float productX = 1.0f;
   float productY = 1.0f;
