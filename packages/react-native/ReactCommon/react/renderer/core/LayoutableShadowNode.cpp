@@ -221,7 +221,7 @@ LayoutMetrics LayoutableShadowNode::computeRelativeLayoutMetrics(
 
     if (!shouldCalculateTransformedFrames && i != 0 &&
         policy.includeTransform) {
-      resultFrame.origin += currentShadowNode->getContentOriginOffset();
+      resultFrame.origin += currentShadowNode->getContentOriginOffset() * currentShadowNode->getTransform();
     }
 
     if (policy.enableOverflowClipping) {
