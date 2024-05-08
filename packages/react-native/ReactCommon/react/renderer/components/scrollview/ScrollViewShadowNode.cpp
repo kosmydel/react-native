@@ -68,22 +68,6 @@ Point ScrollViewShadowNode::getContentOriginOffset(
   auto stateData = getStateData();
   auto contentOffset = stateData.contentOffset;
 
-  const auto& props = getConcreteProps();
-
-  auto result = props.resolveTransform(layoutMetrics_) *
-      Vector{-contentOffset.x, -contentOffset.y, 0, 1};
-
-  float productX = 1.0f;
-  float productY = 1.0f;
-
-  for (const auto& operation : props.transform.operations) {
-    productX *= operation.x;
-    productY *= operation.y;
-  }
-
-  return {
-      -contentOffset.x * productX,
-      (-contentOffset.y + stateData.scrollAwayPaddingTop) * productY};
+  return {-contentOffset.x, -contentOffset.y + stateData.scrollAwayPaddingTop};
 }
-
 } // namespace facebook::react
