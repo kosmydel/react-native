@@ -123,7 +123,7 @@ class LayoutableShadowNode : public ShadowNode {
    * `LayoutableShadowNode::getRelativeLayoutMetrics` and
    * `LayoutableShadowNode::findNodeAtPoint`.
    */
-  virtual Point getContentOriginOffset() const;
+  virtual Point getContentOriginOffset(bool includeTransform) const;
 
   /*
    * Sets layout metrics for the shadow node.
